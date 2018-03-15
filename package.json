@@ -1,0 +1,28 @@
+{
+  "name": "gs-localize",
+  "version": "1.0.0",
+  "description": "Scripts for localize your app using google sheets",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zxcabs/gs-localize.git"
+  },
+  "keywords": [
+    "localize"
+  ],
+  "author": "Evgeny Reznichenko <kysakyky@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zxcabs/gs-localize/issues"
+  },
+  "homepage": "https://github.com/zxcabs/gs-localize#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "async": "^2.6.0",
+    "flat": "^4.0.0",
+    "google-spreadsheet": "^2.0.4"
+  }
+}
