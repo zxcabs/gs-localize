@@ -1,6 +1,6 @@
 {
   "name": "@zxcabs/gs-localize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scripts for localize your app using google sheets",
   "main": "src/index.js",
   "scripts": {
@@ -19,8 +19,7 @@
     "url": "https://github.com/zxcabs/gs-localize/issues"
   },
   "homepage": "https://github.com/zxcabs/gs-localize#readme",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "async": "^2.6.0",
     "flat": "^4.0.0",
     "google-spreadsheet": "^2.0.4"
