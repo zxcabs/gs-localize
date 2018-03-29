@@ -100,8 +100,11 @@ exports.mergepush = (keys) => new Promise((resolve, reject) => {
     console.log('Row to save: ', rowToSave.length);
     let req = Promise.resolve();
 
-    rowToSave.forEach((row) => {
-      req = req.then(() => row())
+    rowToSave.forEach((row, i) => {
+      req = req.then(() => {
+        console.log('Start save row: ', i + 1);
+        return row();
+      })
     });
 
     req
