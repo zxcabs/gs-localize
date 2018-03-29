@@ -90,14 +90,21 @@ exports.mergepush = (keys) => new Promise((resolve, reject) => {
 
         langs.forEach((lang) => { rowData[lang] = translate[lang]; });
 
-        rowToSave.push(new Promise((rs, rj) => sheet.addRow(rowData, (err) => {
+        rowToSave.push(() => new Promise((rs, rj) => sheet.addRow(rowData, (err) => {
           if (err) return rj(err);
           rs();
         })));
       });
     }
 
-    Promise.all(rowToSave)
+    console.log('Row to save: ', rowToSave.length);
+    let req = Promise.resolve();
+
+    rowToSave.forEach((row) => {
+      req.then(() => row())
+    });
+
+    req
       .then(() => resolve(rowToSave.length))
       .catch(reject);
   });
