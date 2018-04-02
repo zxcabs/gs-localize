@@ -1,0 +1,25 @@
+const u = require('util');
+
+function printBody(json, space = '  ', EOF = '\r\n') {
+  return Object.keys(json)
+    .sort()
+    .map((key) => {
+      let val = json[key];
+
+      if (u.isObject(val)) {
+        return `${space}"${key}": ${format(val, space, EOF)}`;
+      } else {
+        return `${space}"${key}": ${JSON.stringify(val)}`;
+      }
+    })
+    .join(`,${EOF}`);
+}
+
+function format(json, space = '', EOF = '\r\n') {
+  const body = printBody(json, space + '  ', EOF);
+  return `{${EOF}${body}${EOF}${space}}`;
+}
+
+module.exports = function stringify(json) {
+  return format(json);
+};

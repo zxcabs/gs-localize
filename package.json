@@ -1,10 +1,10 @@
 {
   "name": "@zxcabs/gs-localize",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Scripts for localize your app using google sheets",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "mocha src/**/*.test.js "
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
     "async": "^2.6.0",
     "flat": "^4.0.0",
     "google-spreadsheet": "^2.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5"
   }
 }

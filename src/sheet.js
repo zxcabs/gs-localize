@@ -138,11 +138,6 @@ exports.mergepull = () => new Promise((resolve, reject) => {
       });
     }
 
-    resolve(flat.unflatten(Object.keys(result)
-      .sort()
-      .reduce((accum, key) => {
-        accum[key] = result[key];
-        return accum
-      }, {})))
+    resolve(result)
   });
 });
