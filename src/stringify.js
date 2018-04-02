@@ -1,6 +1,6 @@
 const u = require('util');
 
-function printBody(json, space = '  ', EOF = '\r\n') {
+function printBody(json, space, EOF) {
   return Object.keys(json)
     .sort()
     .map((key) => {
@@ -15,7 +15,7 @@ function printBody(json, space = '  ', EOF = '\r\n') {
     .join(`,${EOF}`);
 }
 
-function format(json, space = '', EOF = '\r\n') {
+function format(json, space = '', EOF = '\n') {
   const body = printBody(json, space + '  ', EOF);
   return `{${EOF}${body}${EOF}${space}}`;
 }

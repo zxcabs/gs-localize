@@ -6,10 +6,10 @@ describe('stringify', () => {
     const result = stringify({ b: 1, a: 2, c: 3 });
 
     expect(result).to.equal(
-      '{\r\n' +
-      '  "a": 2,\r\n' +
-      '  "b": 1,\r\n' +
-      '  "c": 3\r\n' +
+      '{\n' +
+      '  "a": 2,\n' +
+      '  "b": 1,\n' +
+      '  "c": 3\n' +
       '}'
     )
   });
@@ -43,6 +43,6 @@ describe('stringify', () => {
       '  },',
       '  "b": 1',
       '}'
-    ].join('\r\n'));
+    ].join('\n'));
   });
 });
