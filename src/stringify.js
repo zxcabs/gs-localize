@@ -21,5 +21,7 @@ function format(json, space = '', EOF = '\n') {
 }
 
 module.exports = function stringify(json) {
-  return format(json);
+  const space = '';
+  const EOF = '\n';
+  return `${format(json, space, EOF)}${EOF}`;
 };
