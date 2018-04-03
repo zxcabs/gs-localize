@@ -100,13 +100,13 @@ exports.mergepush = (keys) => new Promise((resolve, reject) => {
 
     console.log('Row to save: ', rowToSave.length);
     let req = Promise.resolve();
-    let progress = new ProgressBar('Upload keys [:bar] :current/:total (:eta)', {
+    let progress = new ProgressBar('Upload keys [:bar] :percent', {
       total: rowToSave.length
     });
 
     rowToSave.forEach((row, i) => {
       req = req.then(() => {
-        progress.tick(i + 1);
+        progress.tick();
         return row();
       })
     });

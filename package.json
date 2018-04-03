@@ -1,6 +1,6 @@
 {
   "name": "@zxcabs/gs-localize",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Scripts for localize your app using google sheets",
   "main": "src/index.js",
   "scripts": {
