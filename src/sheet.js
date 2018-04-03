@@ -1,6 +1,7 @@
 const GS = require('google-spreadsheet');
 const async = require('async');
 const flat = require('flat');
+const ProgressBar = require('progress');
 
 let doc;
 let sheet;
@@ -99,10 +100,14 @@ exports.mergepush = (keys) => new Promise((resolve, reject) => {
 
     console.log('Row to save: ', rowToSave.length);
     let req = Promise.resolve();
+    let progress = new ProgressBar('Upload keys [:bar] :current/:total (:eta)', {
+
+      total: row.length
+    });
 
     rowToSave.forEach((row, i) => {
       req = req.then(() => {
-        console.log('Start save row: ', i + 1);
+        progress.tick(i + 1);
         return row();
       })
     });
