@@ -142,6 +142,6 @@ exports.mergepull = () => new Promise((resolve, reject) => {
       });
     }
 
-    resolve(result)
+    resolve(flat.unflatten(result))
   });
 });
