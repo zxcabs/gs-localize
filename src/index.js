@@ -1,8 +1,8 @@
 const load = require('./load');
 const save = require('./save');
 const sheet = require('./sheet');
-const os = require('os')
-const isWin = os.platform() === 'win32'
+const os = require('os');
+const isWin = os.platform() === 'win32';
 
 module.exports = ({ docId, cred, i18nFileList }) => {
   const keys = load(i18nFileList, isWin);
