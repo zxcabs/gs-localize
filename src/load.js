@@ -1,6 +1,6 @@
 module.exports = (fileList, isWin) => fileList.reduce((result, file) => {
   const lang = isWin 
-    ? file.match(/(\w+)\.json$/)[1]
+    ? file.match(/\\(\w+)\.json$/)[1]
     : file.match(/\/(\w+)\.json$/)[1];
   const json = require(file);
 
