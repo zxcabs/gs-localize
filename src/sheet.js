@@ -1,5 +1,4 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const async = require('async');
 const flat = require('flat');
 const ProgressBar = require('progress');
 
@@ -26,32 +25,31 @@ const getFlats = (langs, keys) => langs.reduce((result, lang) => {
 
 exports.init = (docId, cred) => new Promise(async (resolve, reject) => {
   doc = new GoogleSpreadsheet(docId);
+  try {
+    console.log('Auth...');
+    await doc.useServiceAccountAuth(cred);
+    console.log('Successfully auth!');
 
-  console.log('Auth...');
-  await doc.useServiceAccountAuth(cred);
-  console.log('Successfully auth!');
+    console.log('Get info...');
+    await doc.loadInfo();
+    console.log('Successfully get doc!');
 
-  console.log('Get info...');
-  await doc.loadInfo()
-  console.log('Successfully get doc!');
+    sheet = doc.sheetsByIndex[0];
+    
+    console.log('Document title = ' + doc.title);
 
-  // sheet = doc.worksheets[0];
-  sheet = doc.sheetsByIndex[0];
-  
-  console.log(doc.title)
-  console.log(doc)
-
-  resolve();
+    resolve();
+  } catch (error) {
+    reject(error);
+  }
 });
 
-exports.mergepush = (keys) => new Promise((resolve, reject) => {
+exports.mergepush = (keys) => new Promise(async (resolve, reject) => {
   const langs = Object.keys(keys);
   const flats = getFlats(langs, keys);
 
-  sheet.getRows({
-    offset: 0
-  }, function( err, rows ) {
-    if (err) return reject(err);
+  try {
+    const rows = await sheet.getRows();
     const rowToSave = [];
 
     console.log(`Read ${rows.length} rows`);
@@ -111,14 +109,14 @@ exports.mergepush = (keys) => new Promise((resolve, reject) => {
     req
       .then(() => resolve(rowToSave.length))
       .catch(reject);
-  });
+  } catch (error) {
+    reject(error);
+  }
 });
 
-exports.mergepull = () => new Promise((resolve, reject) => {
-  sheet.getRows({
-    offset: 0
-  }, (err, rows) => {
-    if (err) return reject(err);
+exports.mergepull = () => new Promise(async (resolve, reject) => {
+  try {
+    const rows = await sheet.getRows();
 
     console.log(`Read ${rows.length} rows`);
 
@@ -139,6 +137,8 @@ exports.mergepull = () => new Promise((resolve, reject) => {
       });
     }
 
-    resolve(flat.unflatten(result))
-  });
+    resolve(flat.unflatten(result));  
+  } catch (error) {
+    reject(error);
+  }
 });

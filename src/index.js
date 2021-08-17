@@ -10,6 +10,8 @@ module.exports = ({ docId, cred, i18nFileList }) => {
   return sheet.init(docId, cred)
     .then(() => sheet.mergepush(keys))
     .then(() => sheet.mergepull(keys))
-    .then((translates) => save(i18nFileList, translates, isWin))
+    .then((translates) => {
+      save(i18nFileList, translates, isWin)
+    })
     .catch(e => console.error(e));
 };
