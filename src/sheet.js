@@ -1,4 +1,4 @@
-const GS = require('google-spreadsheet');
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 const async = require('async');
 const flat = require('flat');
 const ProgressBar = require('progress');
@@ -25,7 +25,7 @@ const getFlats = (langs, keys) => langs.reduce((result, lang) => {
 }, {});
 
 exports.init = (docId, cred) => new Promise((resolve, reject) => {
-  doc = new GS(docId);
+  doc = new GoogleSpreadsheet(docId);
 
   async.series([
     function setAuth(step) {
