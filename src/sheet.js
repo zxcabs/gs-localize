@@ -34,7 +34,7 @@ exports.init = (docId, cred) => new Promise((resolve, reject) => {
     },
     function getInfoAndWorksheets(step) {
       console.log('Get info...');
-      doc.getInfo((err, info) => {
+      doc.loadInfo((err, info) => {
         if (err) {
           return(step(err));
         }
