@@ -1,5 +1,5 @@
 {
-  "name": "@kedrovski/gs-localize",
+  "name": "@zxcabs/gs-localize",
   "version": "1.0.15",
   "description": "Scripts for localize your app using google sheets",
   "main": "src/index.js",
@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kedrovski/gs-localize.git"
+    "url": "git+https://github.com/zxcabs/gs-localize.git"
   },
   "keywords": [
     "localize"
   ],
-  "author": "Ruslan Kedrovski <ruslan.kedrovski@gmail.com>",
+  "author": "Evgeny Reznichenko <kysakyky@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kedrovski/gs-localize/issues"
+    "url": "https://github.com/zxcabs/gs-localize/issues"
   },
-  "homepage": "https://github.com/kedrovski/gs-localize#readme",
+  "homepage": "https://github.com/zxcabs/gs-localize#readme",
   "dependencies": {
     "async": "^2.6.0",
     "flat": "^4.0.0",
