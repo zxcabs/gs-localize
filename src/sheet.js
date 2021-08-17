@@ -24,27 +24,24 @@ const getFlats = (langs, keys) => langs.reduce((result, lang) => {
   return result;
 }, {});
 
-exports.init = (docId, cred) => new Promise((resolve, reject) => {
+exports.init = (docId, cred) => new Promise(async (resolve, reject) => {
   doc = new GoogleSpreadsheet(docId);
 
-  async.series([
-    function setAuth(step) {
-      console.log('Auth...');
-      doc.useServiceAccountAuth(cred, step);
-    },
-    function getInfoAndWorksheets(step) {
-      console.log('Get info...');
-      doc.loadInfo((err, info) => {
-        if (err) {
-          return(step(err));
-        }
+  console.log('Auth...');
+  await doc.useServiceAccountAuth(cred);
+  console.log('Successfully auth!');
 
-        console.log('Get info done');
-        sheet = info.worksheets[0];
-        resolve();
-      });
-    }
-  ], reject);
+  console.log('Get info...');
+  await doc.loadInfo()
+  console.log('Successfully get doc!');
+
+  // sheet = doc.worksheets[0];
+  sheet = doc.sheetsByIndex[0];
+  
+  console.log(doc.title)
+  console.log(doc)
+
+  resolve();
 });
 
 exports.mergepush = (keys) => new Promise((resolve, reject) => {
